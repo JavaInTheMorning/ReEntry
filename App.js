@@ -1,49 +1,70 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, Image, TextInput, StyleSheet, View, Button} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+        <View>
+            <ImageBackground source={require('./LoginBackground.png')} style={{width: '100%', height: '100%'}}>
+               <View style = {{flex: 1}}>
+                <View style = {styles.invisibleView}>
+                    <Image style = {styles.logoView} source={require('./Logo.png')}></Image>
+                </View>
+                <View style = {styles.textView}>
+                  <TextInput style = {styles.textInput}
+                  >First Name</TextInput>
+                  <TextInput style = {styles.textInput}
+                  >Last Name</TextInput>
+                  <TextInput style = {styles.textInput}
+                  >Email</TextInput>
+                  <TextInput style = {styles.textInput}
+                  >Password</TextInput>
+                </View>
+                <View style={styles.buttonView}>
+                  <Button title = "Submit"></Button>
+                </View>
+                
+               </View>
+            </ImageBackground>
+        </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+
+var styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+      flex: 1,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  backgroundImage: {
+      flex: 1,
+      resizeMode: 'cover', // or 'stretch'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  textInput:{
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    marginTop: 30,
+    marginLeft: 30,
+    marginRight: 30,
   },
+  invisibleView:{
+    flex: 1
+  },  
+  textView:{
+    flex: 2
+  },
+  buttonView:{
+    flex: .5,
+    marginTop: 30,
+    marginLeft: 30,
+    marginRight: 30,
+  },
+  logoView:{
+    width: 100,
+    height: 100,
+    marginTop: 50,
+    marginLeft: 130,
+  }
 });
